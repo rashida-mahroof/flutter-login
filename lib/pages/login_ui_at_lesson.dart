@@ -90,7 +90,7 @@ class _LessonState extends State<Lesson> {
                         /// Text Fields
                         Container(
                           margin: const EdgeInsets.symmetric(horizontal: 25),
-                          height: 190,
+                          height: 200,
                           width: MediaQuery.of(context).size.width,
                           decoration: BoxDecoration(
                               color: Colors.white,
@@ -105,14 +105,14 @@ class _LessonState extends State<Lesson> {
                               ]
                           ),
                           child: Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: const [
                               /// EMAIL
                               TextField(
                                 style: TextStyle(fontSize: 15),
                                 decoration: InputDecoration(
                                     contentPadding: EdgeInsets.symmetric(horizontal: 10),
-                                    border: OutlineInputBorder(),
+                                    border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(30))),
                                     labelText: 'EmployID',
                                     isCollapsed: false,
                                     hintStyle: TextStyle(fontSize: 14, color: Colors.grey)
@@ -124,7 +124,7 @@ class _LessonState extends State<Lesson> {
                                 obscureText: true,
                                 decoration: InputDecoration(
                                     contentPadding: EdgeInsets.symmetric(horizontal: 10),
-                                    border: OutlineInputBorder(),
+                                    border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(30))),
                                     labelText: 'Password',
                                     isCollapsed: false,
                                     hintStyle: TextStyle(fontSize: 14, color: Colors.grey)
@@ -135,7 +135,7 @@ class _LessonState extends State<Lesson> {
                                 obscureText: true,
                                 decoration: InputDecoration(
                                     contentPadding: EdgeInsets.symmetric(horizontal: 10),
-                                    border: OutlineInputBorder(),
+                                    border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(30),)),
                                     labelText: 'Confirm Password',
                                     isCollapsed: false,
                                     hintStyle: TextStyle(fontSize: 14, color: Colors.grey)

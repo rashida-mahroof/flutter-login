@@ -1,5 +1,10 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_application_2/change_pass.dart';
 import 'package:flutter_application_2/home.dart';
+import 'package:flutter_application_2/register.dart';
+
 
 class ScreenLogin extends StatefulWidget {
    const ScreenLogin
@@ -10,6 +15,9 @@ class ScreenLogin extends StatefulWidget {
 }
 
 class _ScreenLoginState extends State<ScreenLogin> {
+
+
+
 final _usernameController = TextEditingController();
 
 final _passwordController = TextEditingController();
@@ -21,88 +29,107 @@ bool _isDataMatched = true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(20),
-          child: Form(
-            key: _formKey,
-            child: Column(
-              crossAxisAlignment:  CrossAxisAlignment.end,
-              children: [
-                TextFormField(
-                  controller: _usernameController,
-                  decoration: const InputDecoration(
-                    border: OutlineInputBorder(),
-                    hintText: 'Enter Username',
-                  ),
-                  validator: (value){
-                    // if (_isDataMatched)
-                    // {
-                    //   return null;
-                    // }
-                    // else{
-                    //   return 'error';
-                    // }
-                    if(value == null || value.isEmpty){
-                      return 'Value is Empty';
-                    }else{
-                      return null;
-                    }
-                  },
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                TextFormField(
-                  controller: _passwordController,
-                  obscureText: true,
-                  decoration: const InputDecoration(
-                    border: OutlineInputBorder(),
-                    hintText: 'Enter Password',
-                    
-                  ),
-                  validator: (value){
-                    // if (_isDataMatched)
-                    // {
-                    //   return null;
-                    // }
-                    // else{
-                    //   return 'error';
-                    // }
-                     if(value == null || value.isEmpty){
-                      return 'Value is Empty';
-                    }else{
-                      return null;
-                    }
-                  },
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [            
-                    Visibility
-                    (
-                      visible:!_isDataMatched,
-                      child: const Text('username or password does not match',style: TextStyle(color: Colors.red),)),
-                    ElevatedButton.icon(onPressed: (){
-                     if(_formKey.currentState!.validate())
-                     {
-                       checkLogin(context);
-                     }else{
-                       //print('Data is empty');
-                     }
-                
-                      //checkLogin(context);
-                    }, 
-                    icon: const Icon(Icons.check), 
-                    label: const Text('Login')),
-                  ],
-                )
-              ],
+     // backgroundColor:Colors.orange[50],
+      body:
+       SafeArea(
+        child: Column(
+          children: [
+            Container(
+              height: 200,
+              //color: Colors.orangeAccent,
             ),
-          ),
+            Container(
+              
+              //color: Colors.teal,
+              child: Padding(
+                padding: const EdgeInsets.all(40),
+                child: Form(
+                  key: _formKey,
+                  child: Column(
+                    //crossAxisAlignment:  CrossAxisAlignment.end,
+                    children: [
+                      TextFormField(
+                        controller: _usernameController,
+                        decoration: const InputDecoration(
+                          border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(30))),
+                          hintText: 'Enter Employee Id',
+                        ),
+                        validator: (value){
+                          // if (_isDataMatched)
+                          // {
+                          //   return null;
+                          // }
+                          // else{
+                          //   return 'error';
+                          // }
+                          if(value == null || value.isEmpty){
+                            return 'Value is Empty';
+                          }else{
+                            return null;
+                          }
+                        },
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      TextFormField(
+                        controller: _passwordController,
+                        obscureText: true,
+                        decoration: const InputDecoration(
+                          border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(30))),
+                          hintText: 'Enter Password',
+                          
+                        ),
+                        validator: (value){
+                          // if (_isDataMatched)
+                          // {
+                          //   return null;
+                          // }
+                          // else{
+                          //   return 'error';
+                          // }
+                           if(value == null || value.isEmpty){
+                            return 'Value is Empty';
+                          }else{
+                            return null;
+                          }
+                        },
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      TextButton(onPressed: (){
+                        Navigator.push(context,MaterialPageRoute(builder: (context) => const ChangePassword()));
+                      }, child: Text('Forgot Password')),
+                      ElevatedButton.icon(onPressed: (){
+                       if(_formKey.currentState!.validate())
+                       {
+                         checkLogin(context);
+                       }else{                   
+                       }
+                      },                      
+                      icon: const Icon(Icons.check), 
+                      label: const Text('Login')),
+                     
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text('Not have an account'),
+                          TextButton(onPressed: (){
+                            register();
+                            Navigator.push(  
+                            context,  
+                            MaterialPageRoute(builder: (context) => const Register()));  
+                          }, 
+                          child: Text('Register Now')),
+                        ],
+                      )
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ],
         ),
       )
     );
@@ -115,11 +142,11 @@ bool _isDataMatched = true;
      // print('username  and password matched');
       //goto home
        ScaffoldMessenger.of(ctx).showSnackBar(
-        SnackBar(
+        const SnackBar(
           behavior: SnackBarBehavior.floating,
-          margin: const EdgeInsets.all(10),
+          margin: EdgeInsets.all(10),
           backgroundColor: Colors.green,
-          duration: const Duration(seconds: 5),
+          duration: Duration(seconds: 5),
           content: Text('Login Success')));
       Navigator.of(ctx).pushReplacement(MaterialPageRoute(builder: (ctx1)=>const screenHome()));
     }else{
@@ -155,5 +182,9 @@ bool _isDataMatched = true;
       });
     }
     
+  }
+
+  void register() {
+    //Navigator.of(context).push(context,MaterialPageRoute(builder: Register()))
   }
 }

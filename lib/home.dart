@@ -14,7 +14,7 @@ class screenHome extends StatelessWidget {
         backgroundColor: Colors.orange,
         title: const Text('Hoky'),
          actions: [
-           IconButton(onPressed: (){signout(context);}, icon: Icon(Icons.logout_rounded))
+           IconButton(onPressed: (){signout(context);}, icon: const Icon(Icons.logout_rounded))
          ],
       ),
       body:  SafeArea(
@@ -32,11 +32,11 @@ class screenHome extends StatelessWidget {
               
             ),
            
-            Text('Tasks'),
-             SizedBox(
+            const Text('Tasks'),
+             const SizedBox(
               height: 40,
             ),
-            Center(
+            const Center(
               child: Icon(
                 Icons.approval_rounded,
                 color: Colors.green,
@@ -45,11 +45,11 @@ class screenHome extends StatelessWidget {
               
             ),
             
-            Text('Approvals'),
-             SizedBox(
+            const Text('Approvals'),
+             const SizedBox(
               height: 40,
             ),
-            Center(
+            const Center(
               child: Icon(
                 Icons.notifications_active_rounded,
                 color: Colors.orange,
@@ -57,7 +57,7 @@ class screenHome extends StatelessWidget {
               ),
               
             ),
-            Text('Notifications')
+            const Text('Notifications')
             ],
         ),
       

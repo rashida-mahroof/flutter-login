@@ -3,9 +3,10 @@
 // found in the LICENSE file.
 
 import 'package:flutter/material.dart';
-import 'package:flutter_application_2/pages/login_sample_from_mentor.dart';
-import 'package:flutter_application_2/pages/login_ui_at_lesson.dart';
+//import 'package:flutter_application_2/pages/login_ui_at_lesson.dart';
 import 'package:flutter_application_2/splash.dart';
+
+import 'API.dart';
 
 void main() {
   runApp(const MyApp());
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue 
       ),
-      home: const Sample1(),
+      home: const APIintegration(),
     );
   }
 }
