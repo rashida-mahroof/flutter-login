@@ -14,7 +14,7 @@ class _APIintegrationState extends State<APIintegration> {
   Users _users = Users();
   bool isLoading = true;
   void getData()async{
-    var url = Uri.parse('https://fluttmac.github.io/api/user.json');
+    var url = Uri.parse('https://www.hokybo.com/APIKEY/api/WebApi/GetAllDetails');
   final response = await http.get(url);
   var json = jsonDecode(response.body);
   _users = Users.fromJson(json);
@@ -40,7 +40,7 @@ class _APIintegrationState extends State<APIintegration> {
           margin: EdgeInsets.symmetric(vertical: 10),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),
-            color: Colors.yellow,
+            color: Colors.green[50],
           ),
           child: Padding(
             padding: const EdgeInsets.all(20),
@@ -48,19 +48,20 @@ class _APIintegrationState extends State<APIintegration> {
               children: [
                 Column(
                   children: [
-                    Text(_users.data![index].name!,
+                    Text(_users.data![index].title!,
                     style: TextStyle(
                       fontSize: 20
                     ),),
-                    Text(_users.data![index].email!),
+                    Text(_users.data![index].body!,
+                    style: TextStyle(color: Colors.blue),),
                   ],
                 ),
-                Spacer(),
-                Text(_users.data![index].profession!,
-                 style: TextStyle(
-                  fontSize: 20,
-                  color: Colors.green
-                ),),
+                // Spacer(),
+                // Text(_users.data![index].userId!,
+                //  style: TextStyle(
+                //   fontSize: 20,
+                //   color: Colors.green
+                // ),),
               ],
             ),
           ),

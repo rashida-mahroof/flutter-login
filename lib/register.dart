@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:getwidget/components/button/gf_button.dart';
+import 'package:getwidget/shape/gf_button_shape.dart';
 
 class Register extends StatefulWidget {
   const Register({ Key? key }) : super(key: key);
@@ -28,9 +30,10 @@ class _RegisterState extends State<Register> {
               height: 100,
               //color: Colors.orangeAccent,
             ),
+            Image.asset('assets/images/hokylogo.jpg'),
             Container(
-              
-              //color: Colors.teal,
+             // decoration: BoxDecoration( borderRadius: BorderRadius.circular(30)),
+              //color: Colors.orange[50],
               child: Padding(
                 padding: const EdgeInsets.all(40),
                 child: Form(
@@ -139,15 +142,20 @@ class _RegisterState extends State<Register> {
                     const SizedBox(
                         height: 20,
                       ),
-                      ElevatedButton.icon(onPressed: (){
-                      //  if(_formKey.currentState!.validate())
-                      //  {
-                      //    checkLogin(context);
-                      //  }else{                   
-                      //  }
-                      },                      
-                      icon: const Icon(Icons.check), 
-                      label: const Text('Register')),
+                      GFButton(onPressed: (){
+                       if(_formKey.currentState!.validate())
+                        {
+                         checkLogin(context);
+                       }else{                   
+                       }
+                      }, 
+                      color: Colors.orange.shade700,
+                      textColor: Colors.white,
+                      shape: GFButtonShape.pills,
+                      blockButton: true,                          
+                      icon: const Icon(Icons.check,
+                      color: Colors.white,), 
+                      child: const Text('Register')),
                     ],
                   ),
                 ),
@@ -157,5 +165,21 @@ class _RegisterState extends State<Register> {
         ),
       )
     );
+  }
+  void checkLogin(BuildContext ctx){
+    final _username = _usernameController.text;
+    final _empcode = _empcodeController.text;
+    final _password = _passwordController.text;
+    final _cnfmpass = _cnfrmpassController.text;
+    if(_password== _cnfmpass)
+    {
+       ScaffoldMessenger.of(ctx).showSnackBar(
+        SnackBar(
+          behavior: SnackBarBehavior.floating,
+          margin: const EdgeInsets.all(10),
+          backgroundColor: Colors.red,
+          duration: const Duration(seconds: 5),
+          content: Text('_errormsg')));
+    }
   }
 }

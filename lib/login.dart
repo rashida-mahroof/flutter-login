@@ -1,10 +1,11 @@
 import 'dart:convert';
-
+import 'package:motion_toast/motion_toast.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_2/change_pass.dart';
 import 'package:flutter_application_2/home.dart';
 import 'package:flutter_application_2/register.dart';
-
+import 'package:motion_toast/resources/arrays.dart';
+import 'package:getwidget/getwidget.dart';
 
 class ScreenLogin extends StatefulWidget {
    const ScreenLogin
@@ -34,12 +35,14 @@ bool _isDataMatched = true;
        SafeArea(
         child: Column(
           children: [
-            Container(
-              height: 200,
-              //color: Colors.orangeAccent,
-            ),
+            
             Container(
               
+              height: 150,
+              //color: Colors.orangeAccent,
+            ),
+            Image.asset('assets/images/hokylogo.jpg'),
+            Container(             
               //color: Colors.teal,
               child: Padding(
                 padding: const EdgeInsets.all(40),
@@ -94,27 +97,37 @@ bool _isDataMatched = true;
                             return null;
                           }
                         },
+                        
                       ),
-                      const SizedBox(
-                        height: 20,
-                      ),
+                      // const SizedBox(
+                      //   height: 20,
+                      // ),
                       TextButton(onPressed: (){
                         Navigator.push(context,MaterialPageRoute(builder: (context) => const ChangePassword()));
                       }, child: Text('Forgot Password')),
-                      ElevatedButton.icon(onPressed: (){
+                      GFButton(onPressed: (){
                        if(_formKey.currentState!.validate())
                        {
                          checkLogin(context);
                        }else{                   
                        }
-                      },                      
-                      icon: const Icon(Icons.check), 
-                      label: const Text('Login')),
+                      }, 
+                      color: Colors.orange.shade700,
+                      textColor: Colors.white,
+                      shape: GFButtonShape.pills,
+                      blockButton: true,     
+                                      
+                      //icon: const Icon(Icons.check), 
+                      //label: const Text('Login',)
+                      child: Text('Login',
+                      style: TextStyle(fontSize: 20),),
+                      
+                      ),
                      
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text('Not have an account'),
+                          Text('Not have an account?'),
                           TextButton(onPressed: (){
                             register();
                             Navigator.push(  
@@ -155,14 +168,29 @@ bool _isDataMatched = true;
       //snackbar
       // ignore: prefer_const_declarations
       final _errormsg = _username + ' and ' +_password + ' does not match';
-      ScaffoldMessenger.of(ctx).showSnackBar(
-        SnackBar(
-          behavior: SnackBarBehavior.floating,
-          margin: const EdgeInsets.all(10),
-          backgroundColor: Colors.red,
-          duration: const Duration(seconds: 5),
-          content: Text(_errormsg)));
+      // ScaffoldMessenger.of(ctx).showSnackBar(
+      //   SnackBar(
+      //     behavior: SnackBarBehavior.floating,
+      //     margin: const EdgeInsets.all(10),
+      //     backgroundColor: Colors.red,
+      //     duration: const Duration(seconds: 5),
+      //     content: Text(_errormsg)));
       //alert dialogue
+      MotionToast.error(
+      title: Text(
+        _errormsg,
+        style: TextStyle(fontWeight: FontWeight.bold),
+      ),
+      description: Text(
+        _errormsg,
+        style: TextStyle(fontSize: 12),
+      ),
+      layoutOrientation: ORIENTATION.rtl,
+      animationType: ANIMATION.fromRight,
+      width: 300,
+      onClose: () {
+      },
+    ).show(context);
       showDialog(
         context: ctx, 
         builder: (ctx1){
@@ -183,7 +211,9 @@ bool _isDataMatched = true;
     }
     
   }
-
+ void _displaySuccessMotionToast() {
+    
+  }
   void register() {
     //Navigator.of(context).push(context,MaterialPageRoute(builder: Register()))
   }

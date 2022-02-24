@@ -25,6 +25,7 @@ class _ChangePasswordState extends State<ChangePassword> {
               height: 100,
               //color: Colors.orangeAccent,
             ),
+            Image.asset('assets/images/hokylogo.jpg'),
             Container(
               
               //color: Colors.teal,

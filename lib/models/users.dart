@@ -1,3 +1,4 @@
+
 // To parse this JSON data, do
 //
 //     final users = usersFromJson(jsonString);
@@ -6,7 +7,7 @@ import 'dart:convert';
 
 Users usersFromJson(String str) => Users.fromJson(json.decode(str));
 
-//String usersToJson(Users data) => json.encode(data.toJson());
+String usersToJson(Users data) => json.encode(data.toJson());
 
 class Users {
     Users({
@@ -19,35 +20,96 @@ class Users {
         data: List<User>.from(json["data"].map((x) => User.fromJson(x))),
     );
 
-    // Map<String, dynamic> toJson() => {
-    //     "data": List<dynamic>.from(data!.map((x) => x.toJson())),
-    // };
+    Map<String, dynamic> toJson() => {
+        "data": List<dynamic>.from(data!.map((x) => x.toJson())),
+    };
 }
 
 class User {
     User({
+        this.userId,
         this.id,
-        this.name,
-        this.email,
-        this.profession,
+        this.title,
+        this.body,
     });
 
+    int? userId;
     int? id;
-    String? name;
-    String? email;
-    String? profession;
+    String? title;
+    String? body;
 
     factory User.fromJson(Map<String, dynamic> json) => User(
+        userId: json["userId"],
         id: json["id"],
-        name: json["name"],
-        email: json["email"],
-        profession: json["profession"],
+        title: json["title"],
+        body: json["body"],
     );
 
-    // Map<String, dynamic> toJson() => {
-    //     "id": id,
-    //     "name": name,
-    //     "email": email,
-    //     "profession": profession,
-    // };
+    Map<String, dynamic> toJson() => {
+        "userId": userId,
+        "id": id,
+        "title": title,
+        "body": body,
+    };
 }
+
+
+
+
+
+
+
+
+// // To parse this JSON data, do
+// //
+// //     final users = usersFromJson(jsonString);
+
+// import 'dart:convert';
+
+// Users usersFromJson(String str) => Users.fromJson(json.decode(str));
+
+// //-String usersToJson(Users data) => json.encode(data.toJson());
+
+// class Users {
+//     Users({
+//         this.data,
+//     });
+
+//     List<User>? data;
+
+//     factory Users.fromJson(Map<String, dynamic> json) => Users(
+//         data: List<User>.from(json["data"].map((x) => User.fromJson(x))),
+//     );
+
+//     // Map<String, dynamic> toJson() => {
+//     //     "data": List<dynamic>.from(data!.map((x) => x.toJson())),
+//     // };
+// }
+
+// class User {
+//     User({
+//         this.id,
+//         this.name,
+//         this.email,
+//         this.profession,
+//     });
+
+//     int? id;
+//     String? name;
+//     String? email;
+//     String? profession;
+
+//     factory User.fromJson(Map<String, dynamic> json) => User(
+//         id: json["id"],
+//         name: json["name"],
+//         email: json["email"],
+//         profession: json["profession"],
+//     );
+
+//     // Map<String, dynamic> toJson() => {
+//     //     "id": id,
+//     //     "name": name,
+//     //     "email": email,
+//     //     "profession": profession,
+//     // };
+// }
