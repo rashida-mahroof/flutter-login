@@ -33,40 +33,44 @@ class _APIintegrationState extends State<APIintegration> {
     return Scaffold(
       body:isLoading?Center(
         child: CircularProgressIndicator(),
-      ) :ListView.builder(
-        itemCount: _users.data!.length,
-        itemBuilder:( context,index){
-        return Container(
-          margin: EdgeInsets.symmetric(vertical: 10),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(20),
-            color: Colors.green[50],
-          ),
-          child: Padding(
-            padding: const EdgeInsets.all(20),
-            child: Row(
-              children: [
-                Column(
+      ) :
+          ListView.builder(
+            itemCount: _users.data!.length,
+            itemBuilder:( context,index){
+            return Container(
+              margin: EdgeInsets.symmetric(vertical: 10),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20),
+                color: Colors.green[50],
+              ),
+              child: Padding(
+                padding: const EdgeInsets.all(20),
+                child: Row(
                   children: [
-                    Text(_users.data![index].title!,
-                    style: TextStyle(
-                      fontSize: 20
-                    ),),
-                    Text(_users.data![index].body!,
-                    style: TextStyle(color: Colors.blue),),
+                    Column(
+                      children: [
+                        Text(_users.data![index].title!,
+                        style: TextStyle(
+                          fontSize: 20
+                        ),),
+                        Text(_users.data![index].body!,
+                        style: TextStyle(color: Colors.blue),),
+                      ],
+                    ),
+                    // Spacer(),
+                    // Text(_users.data![index].userId!,
+                    //  style: TextStyle(
+                    //   fontSize: 20,
+                    //   color: Colors.green
+                    // ),),
+                   // 
                   ],
                 ),
-                // Spacer(),
-                // Text(_users.data![index].userId!,
-                //  style: TextStyle(
-                //   fontSize: 20,
-                //   color: Colors.green
-                // ),),
-              ],
-            ),
-          ),
-        );
-      }),
+              ),  
+            );
+          },
+      ),
+      
     );
   }
 }
