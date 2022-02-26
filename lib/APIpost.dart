@@ -13,15 +13,16 @@ final String title;
 }
 Future<DataModel?> submitData(String name,String job)async{
   print('hi');
-  var response = await http.post(Uri.https('reqres.in', 'api/users'), body: {
+  var response = await http.post(Uri.parse('https://reqres.in/api/users'), body: {
     "name" :name, 'job':job
   });
   var data = response.body;
-  print(data);
+  
 
   if(response.statusCode==201){
     String responseString = response.body;
     dataModelFromJson(responseString);
+    print(data);
   }else {
     return null;
   }

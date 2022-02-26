@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:getwidget/components/button/gf_button.dart';
+import 'package:getwidget/shape/gf_button_shape.dart';
 
 class ChangePassword extends StatefulWidget {
   const ChangePassword
@@ -25,7 +27,7 @@ class _ChangePasswordState extends State<ChangePassword> {
               height: 100,
               //color: Colors.orangeAccent,
             ),
-            Image.asset('assets/images/hokylogo.jpg'),
+            Image.asset('assets/images/tiptop.png'),
             Container(
               
               //color: Colors.teal,
@@ -39,7 +41,7 @@ class _ChangePasswordState extends State<ChangePassword> {
                       TextFormField(
                         controller: _usernameController,
                         decoration: const InputDecoration(
-                          border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(30))),
+                          border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(10))),
                           hintText: 'Enter ERP Password',
                         ),
                         validator: (value){
@@ -64,7 +66,7 @@ class _ChangePasswordState extends State<ChangePassword> {
                         controller: _passwordController,
                         obscureText: true,
                         decoration: const InputDecoration(
-                          border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(30))),
+                          border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(10))),
                           hintText: 'Type new Password',
                           
                         ),
@@ -90,7 +92,7 @@ class _ChangePasswordState extends State<ChangePassword> {
                         controller: _passwordController,
                         obscureText: true,
                         decoration: const InputDecoration(
-                          border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(30))),
+                          border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(10))),
                           hintText: 'Confirm Password',
                           
                         ),
@@ -112,16 +114,21 @@ class _ChangePasswordState extends State<ChangePassword> {
                       const SizedBox(
                         height: 20,
                       ),
-                      ElevatedButton.icon(onPressed: (){
+                      GFButton(onPressed: (){
                        if(_formKey.currentState!.validate())
-                       {
-                         //checkLogin(context);
+                        {
+                        
                        }else{                   
                        }
-                      },                      
-                      icon: const Icon(Icons.check), 
-                      label: const Text('Submit')),
-                     
+                      }, 
+                      color: Colors.red,
+                      textColor: Colors.white,
+                      shape: GFButtonShape.standard,
+                      blockButton: true,                          
+                      icon: const Icon(Icons.check,
+                      color: Colors.white,), 
+                      child: const Text('Submit',
+                      style: TextStyle(fontSize: 20,),)),
                       
                     ],
                   ),

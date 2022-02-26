@@ -37,13 +37,22 @@ bool _isDataMatched = true;
           children: [
             
             Container(
+              color: Colors.red,
+              width: double.infinity,  
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Image.asset('assets/images/tiptop.png',)
+                ],
+              ),
+              height: 200,
               
-              height: 150,
               //color: Colors.orangeAccent,
             ),
-            Image.asset('assets/images/hokylogo.jpg'),
-            Container(             
-              //color: Colors.teal,
+            
+            Container(
+              decoration: BoxDecoration(borderRadius: BorderRadius.circular(50.0)),             
+              // color: Colors.white,
               child: Padding(
                 padding: const EdgeInsets.all(40),
                 child: Form(
@@ -54,8 +63,10 @@ bool _isDataMatched = true;
                       TextFormField(
                         controller: _usernameController,
                         decoration: const InputDecoration(
-                          border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(30))),
+                          border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(10))),
                           hintText: 'Enter Employee Id',
+                          hintStyle: TextStyle(color: Colors.black38),
+                          suffixIcon: Icon(Icons.mail,color: Colors.red,), 
                         ),
                         validator: (value){
                           // if (_isDataMatched)
@@ -79,9 +90,11 @@ bool _isDataMatched = true;
                         controller: _passwordController,
                         obscureText: true,
                         decoration: const InputDecoration(
-                          border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(30))),
-                          hintText: 'Enter Password',
-                          
+                          border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(10))),
+                          hintText: 'Enter Password', 
+                          hintStyle: TextStyle(color: Colors.black38),
+                          suffixIcon: Icon(Icons.lock,
+                          color: Colors.red,),
                         ),
                         validator: (value){
                           // if (_isDataMatched)
@@ -99,9 +112,9 @@ bool _isDataMatched = true;
                         },
                         
                       ),
-                      // const SizedBox(
-                      //   height: 20,
-                      // ),
+                      const SizedBox(
+                        height: 20,
+                      ),
                       TextButton(onPressed: (){
                         Navigator.push(context,MaterialPageRoute(builder: (context) => const ChangePassword()));
                       }, child: Text('Forgot Password')),
@@ -112,18 +125,23 @@ bool _isDataMatched = true;
                        }else{                   
                        }
                       }, 
-                      color: Colors.orange.shade700,
+                      
+                      color: Colors.red,
                       textColor: Colors.white,
-                      shape: GFButtonShape.pills,
-                      blockButton: true,     
+                      shape: GFButtonShape.standard,
+                      blockButton: true,
                                       
                       //icon: const Icon(Icons.check), 
                       //label: const Text('Login',)
-                      child: Text('Login',
+                      child: Text('     Login     ',
                       style: TextStyle(fontSize: 20),),
                       
                       ),
-                     
+                      
+                      
+                     const SizedBox(
+                        height: 30,
+                      ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [

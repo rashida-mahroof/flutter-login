@@ -29,7 +29,7 @@ class _SplashState extends State<Splash> {
     return Scaffold(
       //backgroundColor: Colors.red[600],
       body:
-       Center(child: Image.asset('assets/images/hokylogo.jpg'),
+       Center(child: Image.asset('assets/images/tiptop.png'),
       ),
     );
   }

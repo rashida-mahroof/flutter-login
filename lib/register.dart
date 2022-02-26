@@ -27,15 +27,15 @@ class _RegisterState extends State<Register> {
         child: Column(
           children: [
             Container(
-              height: 100,
+              height: 50,
               //color: Colors.orangeAccent,
             ),
-            Image.asset('assets/images/hokylogo.jpg'),
+            Image.asset('assets/images/tiptop.png'),
             Container(
              // decoration: BoxDecoration( borderRadius: BorderRadius.circular(30)),
               //color: Colors.orange[50],
               child: Padding(
-                padding: const EdgeInsets.all(40),
+                padding: const EdgeInsets.all(30),
                 child: Form(
                   key: _formKey,
                   child: Column(
@@ -44,7 +44,7 @@ class _RegisterState extends State<Register> {
                       TextFormField(
                         controller: _usernameController,
                         decoration: const InputDecoration(
-                          border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(30))),
+                          border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(10))),
                           hintText: 'Enter User Name',
                         ),
                         validator: (value){
@@ -68,7 +68,7 @@ class _RegisterState extends State<Register> {
                       TextFormField(
                         controller: _empcodeController,
                         decoration: const InputDecoration(
-                          border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(30))),
+                          border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(10))),
                           hintText: 'Enter Employee Code',
                         ),
                         validator: (value){
@@ -94,7 +94,7 @@ class _RegisterState extends State<Register> {
                         controller: _passwordController,
                         obscureText: true,
                         decoration: const InputDecoration(
-                          border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(30))),
+                          border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(10))),
                           hintText: 'Create Password',
                           
                         ),
@@ -120,7 +120,7 @@ class _RegisterState extends State<Register> {
                         controller: _cnfrmpassController,
                         obscureText: true,
                         decoration: const InputDecoration(
-                          border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(30))),
+                          border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(10))),
                           hintText: 'Confirm Password',
                           
                         ),
@@ -149,20 +149,35 @@ class _RegisterState extends State<Register> {
                        }else{                   
                        }
                       }, 
-                      color: Colors.orange.shade700,
+                      color: Colors.red,
                       textColor: Colors.white,
-                      shape: GFButtonShape.pills,
+                      shape: GFButtonShape.standard,
                       blockButton: true,                          
                       icon: const Icon(Icons.check,
                       color: Colors.white,), 
-                      child: const Text('Register')),
+                      child: const Text('Register',
+                      style: TextStyle(fontSize: 20,),)),
                     ],
                   ),
                 ),
               ),
             ),
-          ],
+            Padding(
+              padding: const EdgeInsets.all(10),
+              child: Center(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text('Already have an account?'),
+                    TextButton(onPressed: (){}, child: Text('Login')),
+                  ],
+                ),
+              ),
+            )           
+          ],  
+                 
         ),
+        
       )
     );
   }
