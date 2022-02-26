@@ -37,6 +37,7 @@ dependencies:
   http: ^0.13.4
   motion_toast: ^2.1.1
   getwidget: ^2.0.5
+  user_profile_avatar: ^0.1.0
 
 dev_dependencies:
   flutter_test:

@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_2/models/users.dart';
@@ -8,21 +10,23 @@ import 'models/dataModel.dart';
 class APIpost extends StatefulWidget {
   const APIpost({ Key? key,required this.title }) : super(key: key);
 final String title;
+
   @override
   State<APIpost> createState() => _APIpostState();
 }
 Future<DataModel?> submitData(String name,String job)async{
+  DataModel dataobject = DataModel();
   print('hi');
   var response = await http.post(Uri.parse('https://reqres.in/api/users'), body: {
     "name" :name, 'job':job
   });
   var data = response.body;
-  
-
   if(response.statusCode==201){
     String responseString = response.body;
-    dataModelFromJson(responseString);
+     dataobject = dataModelFromJson(responseString);
+    print(dataobject.name);
     print(data);
+
   }else {
     return null;
   }

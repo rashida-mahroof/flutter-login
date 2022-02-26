@@ -4,6 +4,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_application_2/APIpost.dart';
+import 'package:flutter_application_2/home.dart';
 //import 'package:flutter_application_2/pages/login_ui_at_lesson.dart';
 import 'package:flutter_application_2/splash.dart';
 
@@ -23,7 +24,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue 
       ),
-      home: const Splash(),
+      home: const screenHome(),
     );
   }
 }
